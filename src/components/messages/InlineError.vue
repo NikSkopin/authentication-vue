@@ -5,7 +5,11 @@
 <script>
 export default {
   name: 'InlineError',
-  props: ['text'],
+  props: {
+    text: {
+      type: String,
+    },
+  },
 
   data() {
     return {};

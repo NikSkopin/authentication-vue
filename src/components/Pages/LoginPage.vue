@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Login Page</h1>
-    <LoginForm />
+    <LoginForm @submit="submit" />
   </div>
 </template>
 <script>
@@ -11,8 +11,11 @@ export default {
   components: {
     LoginForm,
   },
+  methods: {
+    submit(data) {
+      console.log(data);
+    },
+  },
 };
-
 </script>
-<style>
-</style>
+<style></style>

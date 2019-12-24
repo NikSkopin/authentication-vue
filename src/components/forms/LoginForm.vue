@@ -7,8 +7,9 @@
           v-model="userData.email"
           type="email"
           placeholder="example@example.com"
+          :state="errors.email ? false : null"
         ></b-form-input>
-        <InlineError :text="errors.email" />
+        <InlineError v-if="errors.email" :text="errors.email" />
       </b-form-group>
       <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
         <b-form-input
@@ -16,8 +17,9 @@
           v-model="userData.password"
           type="password"
           placeholder="Password"
+          :state="errors.password ? false : null"
         ></b-form-input>
-        <InlineError :text="errors.password" />
+        <InlineError v-if="errors.password" :text="errors.password" />
       </b-form-group>
 
       <b-form-group id="input-group-3">
@@ -56,12 +58,14 @@ export default {
       e.preventDefault();
       const errors = this.validate(this.userData);
       this.errors = errors;
+      if (Object.keys(errors).length === 0) {
+        this.$emit('submit', this.userData);
+      }
     },
     validate(data) {
       const errors = {};
       if (!Validator.isEmail(data.email)) errors.email = 'Invalid email';
       if (!data.password) errors.password = "Can't be blank";
-      console.log(this.errors);
 
       return errors;
     },

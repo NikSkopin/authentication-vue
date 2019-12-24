@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    user: null,
+    token: null,
+    isUserLoggedIn: !!localStorage.getItem('token'),
   },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  },
+  mutations: {},
+  actions: {},
+  modules: {},
 });
