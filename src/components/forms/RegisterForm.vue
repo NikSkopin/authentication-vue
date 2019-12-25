@@ -22,10 +22,7 @@
         <InlineError v-if="errors.password" :text="errors.password" />
       </b-form-group>
 
-      <b-form-group id="input-group-3">
-        <b-form-checkbox v-model="stayLoggedIn">Stay logged in</b-form-checkbox>
-      </b-form-group>
-      <b-button type="submit" variant="primary">Login</b-button>
+      <b-button type="submit" variant="primary">Register</b-button>
     </b-form>
   </div>
 </template>
@@ -34,7 +31,7 @@ import Validator from 'validator';
 import InlineError from '../messages/InlineError.vue';
 
 export default {
-  name: 'LoginForm',
+  name: 'RegisterForm',
 
   data() {
     return {
@@ -42,12 +39,7 @@ export default {
         email: '',
         password: '',
       },
-      loading: false,
-      errors: {
-        email: '',
-        password: '',
-      },
-      stayLoggedIn: false,
+      errors: {},
     };
   },
   components: {
