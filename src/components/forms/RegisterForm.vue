@@ -11,7 +11,7 @@
         ></b-form-input>
         <InlineError v-if="errors.email" :text="errors.email" />
       </b-form-group>
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Password:" label-for="input-2">
         <b-form-input
           id="password"
           v-model="userData.password"

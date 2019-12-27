@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Login Page</h1>
-    <span>{{ error }}</span>
+    <b-alert show variant="danger" v-if="error">{{ error }}</b-alert>
     <LoginForm @submit="login" />
   </div>
 </template>
@@ -12,7 +12,7 @@ import AuthService from '../services/AuthService';
 export default {
   data() {
     return {
-      error: 'error!!!',
+      error: '',
     };
   },
   components: {
@@ -26,11 +26,11 @@ export default {
           email: data.email,
           password: data.password,
         });
-        // this.$store.dispatch('setToken', response.data.token);
-        // this.$store.dispatch('setUser', response.data.user);
-        // this.$router.push({
-        //   name: 'homepage',
-        // });
+        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch('setUser', response.data.email);
+        this.$router.push({
+          name: 'homepage',
+        });
       } catch (error) {
         this.error = error.response.data.error;
       }

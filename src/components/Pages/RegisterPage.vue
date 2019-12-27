@@ -10,16 +10,30 @@ import RegisterForm from '../forms/RegisterForm.vue';
 import AuthService from '../services/AuthService';
 
 export default {
+  data() {
+    return {
+      error: '',
+    };
+  },
   components: {
     RegisterForm,
   },
   methods: {
-    async register() {
-      const response = await AuthService.register({
-        email: this.email,
-        password: this.password,
-      });
-      console.log(response.data);
+    async register(data) {
+      this.error = null;
+      try {
+        const response = await AuthService.register({
+          email: data.email,
+          password: data.password,
+        });
+        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch('setUser', response.data.email);
+        this.$router.push({
+          name: 'homepage',
+        });
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
     },
   },
 };
