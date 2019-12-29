@@ -1,4 +1,6 @@
-# stocks-vue
+# authentication-vue
+
+Client side of Vue authentication form (registration and login/logout). Can be used in projects.
 
 ## Project setup
 ```

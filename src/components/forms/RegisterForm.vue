@@ -16,7 +16,7 @@
           id="password"
           v-model="userData.password"
           type="password"
-          placeholder="Password"
+          placeholder="Must contain 6 or more characters"
           :state="errors.password ? false : null"
         ></b-form-input>
         <InlineError v-if="errors.password" :text="errors.password" />
@@ -57,6 +57,7 @@ export default {
     validate(data) {
       const errors = {};
       if (!Validator.isEmail(data.email)) errors.email = 'Invalid email';
+      // TODO add password pattern validation
       if (!data.password) errors.password = "Can't be blank";
 
       return errors;
